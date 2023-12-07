@@ -106,6 +106,7 @@
 </ul>
 
 <h2>functions</h2>
+<%-- https://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/fn/tld-summary.html --%>
 <ul>
     <li>${name}</li>
     <li>${fn:toUpperCase(name)}</li>
