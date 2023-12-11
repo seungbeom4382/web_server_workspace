@@ -12,6 +12,20 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
+    <typeAliases>
+        <!-- <typeAlias type="com.sh.mybatis.member.model.entity.Member" alias="member"/> -->
+        <!--
+            package 하위 모든 클래스가 (첫글자가)소문자로 시작되는 별칭으로 등록
+            - Member -> member
+            - MemberAddress -> memberAddress
+        -->
+        <package name="com.sh.mybatis"/>
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.sh.mybatis.common.ListStringTypeHandler"/>
+    </typeHandlers>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
