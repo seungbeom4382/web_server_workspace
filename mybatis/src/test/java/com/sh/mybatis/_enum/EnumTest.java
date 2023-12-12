@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class EnumTest {
-    public enum Type {
+    public enum Type { // 타입에 직접 지정해 오류가 나지 않는다.
         M, A;
     }
 
@@ -38,7 +38,7 @@ public class EnumTest {
         assertThat(admin.gender).isEqualTo(Gender.F);
     }
 
-    @DisplayName("Enum객체는 하나만 만들어져 공유된다.")
+    @DisplayName("Enum객체는 하나만 만들어져 공유된다. Immutable")
     @Test
     public void test2(){
         Type M1 = Type.M;

@@ -1,12 +1,12 @@
-package com.sh.mybatis.member.model.service;
+package com.sh.mvc.member.model.service;
 
-import com.sh.mybatis.member.model.dao.MemberDao;
-import com.sh.mybatis.member.model.entity.Member;
+import com.sh.mvc.member.model.dao.MemberDao;
+import com.sh.mvc.member.model.entity.Member;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-import static com.sh.mybatis.common.SqlSessionTemplate.getSqlSession;
+import static com.sh.mvc.common.SqlSessionTemplate.getSqlSession;
 
 public class MemberService {
     private MemberDao memberDao = new MemberDao();

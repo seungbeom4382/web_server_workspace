@@ -1,4 +1,4 @@
-package com.sh.mybatis.common;
+package com.sh.mvc.common;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

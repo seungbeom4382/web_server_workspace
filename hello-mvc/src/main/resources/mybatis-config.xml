@@ -13,17 +13,17 @@
     </settings>
 
     <typeAliases>
-        <!-- <typeAlias type="com.sh.mybatis.member.model.entity.Member" alias="member"/> -->
+        <!-- <typeAlias type="com.sh.mvc.member.model.entity.Member" alias="member"/> -->
         <!--
             package 하위 모든 클래스가 (첫글자가)소문자로 시작되는 별칭으로 등록
             - Member -> member
             - MemberAddress -> memberAddress
         -->
-        <package name="com.sh.mybatis"/>
+        <package name="com.sh.mvc"/>
     </typeAliases>
 
     <typeHandlers> <!-- 설정 필수 -->
-        <typeHandler handler="com.sh.mybatis.common.ListStringTypeHandler"/>
+        <typeHandler handler="com.sh.mvc.common.ListStringTypeHandler"/>
     </typeHandlers>
 
     <environments default="development">
