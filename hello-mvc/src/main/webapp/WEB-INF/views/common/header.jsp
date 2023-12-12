@@ -17,6 +17,7 @@
         <c:if test="${msg != null}">
             alert("${msg}");
             <%-- session속성 msg 제거해서 1회만 출력되도록 한다. --%>
+            <%-- session.removeAttribute("msg"); --%>
             <c:remove var="msg" scope="session" />
         </c:if>
     </script>
@@ -31,7 +32,7 @@
                     <span class="self-center text-2xl font-semibold whitespace-nowrap">Hello MVC</span>
                 </a>
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                    <c:if test="${loginMember == null}">
+                    <c:if test="${loginMember == null}"> <!-- SessionScope.loginMember <= SessionScope. 생략해도됨 -->
                         <a href="${pageContext.request.contextPath}/member/memberLogin" class="text-md text-gray-600 hover:underline">로그인</a>
                         <a href="${pageContext.request.contextPath}/member/memberRegister" class="text-md text-gray-500 hover:underline">회원가입</a>
                     </c:if>
