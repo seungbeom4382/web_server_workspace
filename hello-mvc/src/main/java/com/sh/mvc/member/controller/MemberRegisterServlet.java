@@ -39,7 +39,7 @@ public class MemberRegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
         String _gender = req.getParameter("gender");
-        String[] _hobby = req.getParameterValues("hobby");
+        String[] _hobby = req.getParameterValues("hobby"); // 취미 다수 선택가능하므로 []
         System.out.println(id + ", " + password + ", " + name + ", " + _birthday + ", " + email + ", " + phone + ", " + _gender + ", " + _hobby);
 
         LocalDate birthday = _birthday != null ?

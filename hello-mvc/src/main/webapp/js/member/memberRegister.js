@@ -73,7 +73,7 @@ document.memberRegisterFrm.addEventListener('submit', (e) => {
     }
 
     // 비밀번호 확인
-    if(password.value !== confirmPassword.value){
+    if(password.value != confirmPassword.value){
         alert('두 비밀번호가 다릅니다.');
         e.preventDefault();
         return;
