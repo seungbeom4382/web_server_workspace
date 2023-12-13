@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="${pageContext.request.contextPath}/js/tailwind.config.js"></script>
     <script>
-        <c:if test="${msg != null}">
+        <c:if test="${msg != null}"> // 메시지가 있을 경우
             alert("${msg}");
             <%-- session속성 msg 제거해서 1회만 출력되도록 한다. --%>
             <%-- session.removeAttribute("msg"); --%>

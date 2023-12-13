@@ -57,6 +57,6 @@ public class MemberRegisterServlet extends HttpServlet {
         req.getSession().setAttribute("msg", "😁😁 회원가입 축하드립니다. 😁😁");
 
         // 4. view(forward) | redirect
-        resp.sendRedirect(req.getContextPath());
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }

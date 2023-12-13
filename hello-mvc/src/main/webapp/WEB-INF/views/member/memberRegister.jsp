@@ -78,7 +78,7 @@
                         </div>
                         <div class="inline-flex items-center mr-4" id="hobby-etc-wrapper">
                             <input type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" >
-                            <label id="hobby-etc" class="ms-2 text-sm font-medium text-gray-500" contenteditable>직접입력</label>
+                            <label id="hobby-etc" class="ms-2 text-sm font-medium text-gray-500" contenteditable>직접입력</label> <!-- contenteditable 추가 -->
                         </div>
                     </fieldset>
 

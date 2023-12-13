@@ -1,5 +1,5 @@
 const hobbyEtc = document.querySelector("#hobby-etc");
-hobbyEtc.addEventListener('keyup', (e) => {
+hobbyEtc.addEventListener('keyup', (e) => { // enter 누를시 비활 제거
     // 엔터를 누른 경우, 입력완료로 간주한다.
     if(e.keyCode === 13){
        // 자동으로 생겨난 <br><br>을 제거. blur처리
@@ -21,7 +21,8 @@ hobbyEtc.addEventListener('blur', (e)=> {
        // - afterbegin 시작태그 뒤. 첫 자식요소로 추가
        // - beforeend 종료태그 앞. 마지막 자식요소로 추가
        // - afterend 종료태그 뒤. 다음 형제요소로 추가
-       e.target.parentElement.insertAdjacentHTML('beforebegin', html);
+       // e.target.parentElement : label#hobby-etc를 감싼 div태그
+       e.target.parentElement.insertAdjacentHTML('beforebegin', html); // <= 이전 형 요소로 html 추가하라는 말
        e.target.innerHTML = '직접입력';
    }
 });

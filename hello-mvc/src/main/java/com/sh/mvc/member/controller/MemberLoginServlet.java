@@ -73,6 +73,8 @@ public class MemberLoginServlet extends HttpServlet {
         Member member = memberService.findById(id);
         System.out.println(member);
 
+        // 세션생성/가져오기 코드
+        // getSession(), getSession(true) : 세션이 존재하지 않으면 생성, 존재하는 세션을 반환
         HttpSession session = req.getSession();
         if(member != null && password.equals(member.getPassword())) {
             // 로그인 성공
@@ -87,6 +89,6 @@ public class MemberLoginServlet extends HttpServlet {
 
         // 4. view단처리 (forwarding) | redirect처리 (url변경)
         // DML요청(POST), 로그인요청등은 반드시 redirect로 처리해서 url을 변경해야 한다.
-        resp.sendRedirect(req.getContextPath());
+        resp.sendRedirect(req.getContextPath() + "/"); // 경로를 한번 더 주기
     }
 }
