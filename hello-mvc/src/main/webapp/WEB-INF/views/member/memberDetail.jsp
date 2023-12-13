@@ -76,8 +76,8 @@
 <%--                        <c:if test="hobby ne '운동' && hobby ne '게임' && hobby ne '영화' && hobby ne '음악'">--%>
                         <c:if test="${not hobbyDefaultList.contains(hobby)}">
                             <div class="inline-flex items-center mr-4">
-                                <input id="hobby-${vs.count + 4}" type="checkbox" name="hobby" value="${hobby}" checked class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
-                                <label for="hobby-${vs.count + 4}" class="ms-2 text-sm font-medium text-gray-900">${hobby}</label>
+                                <input id="hobby-${vs.count + hobbyDefaultList.size()}" type="checkbox" name="hobby" value="${hobby}" checked class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                <label for="hobby-${vs.count + hobbyDefaultList.size()}" class="ms-2 text-sm font-medium text-gray-900">${hobby}</label>
                             </div>
                         </c:if>
                     </c:forEach>
