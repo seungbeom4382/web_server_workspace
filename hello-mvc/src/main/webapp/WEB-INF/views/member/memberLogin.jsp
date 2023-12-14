@@ -16,11 +16,11 @@
         <h1 class="mb-6 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
             로그인
         </h1>
-        <form class="space-y-6" method="POST">
+        <form name="memberLoginFrm" class="space-y-6" method="POST">
             <div>
                 <label for="id" class="block text-sm font-medium leading-6 text-gray-900">아이디</label>
                 <div class="mt-2">
-                    <input id="id" name="id" type="text" autocomplete="id" required class="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input id="id" name="id" type="text" autocomplete="id" required class="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value=${saveId}>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="flex items-center">
-                <input id="saveId" name="saveId" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                <input id="saveId" name="saveId" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500" ${saveId.value == null ? '' : 'checked'}>
                 <label for="saveId" class="ms-2 text-sm font-medium text-gray-700">아이디 저장</label>
             </div>
 
@@ -47,5 +47,5 @@
         </form>
     </div>
 </div>
-
+<script src="${pageContext.request.contextPath}/js/member/memberLogin.js"></script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

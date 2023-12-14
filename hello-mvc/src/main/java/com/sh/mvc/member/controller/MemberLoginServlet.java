@@ -90,5 +90,6 @@ public class MemberLoginServlet extends HttpServlet {
         // 4. view단처리 (forwarding) | redirect처리 (url변경)
         // DML요청(POST), 로그인요청등은 반드시 redirect로 처리해서 url을 변경해야 한다.
         resp.sendRedirect(req.getContextPath() + "/"); // 경로를 한번 더 주기
+
     }
 }
