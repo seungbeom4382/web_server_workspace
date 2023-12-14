@@ -5,6 +5,7 @@ import com.sh.mvc.member.model.entity.Member;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.sh.mvc.common.SqlSessionTemplate.getSqlSession;
 
@@ -114,5 +115,25 @@ public class MemberService {
         return result;
     }
 
+    public int updateMemberRole(Member member) {
+        int result = 0;
+        SqlSession session = getSqlSession();
+        try {
+            result = memberDao.updateRole(session, member);
+            session.commit();
+        } catch (Exception e){
+            session.rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+        return result;
+    }
 
+    public List<Member> searchMember(Map<String, Object> param) {
+        SqlSession session = getSqlSession();
+        List<Member> members = memberDao.searchMember(session, param);
+        session.close();
+        return members;
+    }
 }

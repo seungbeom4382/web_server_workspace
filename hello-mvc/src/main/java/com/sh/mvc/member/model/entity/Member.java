@@ -31,6 +31,7 @@ public class Member {
         this.point = point;
         this.regDate = regDate;
     }
+
     public String getId() {
         return id;
     }

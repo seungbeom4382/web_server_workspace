@@ -33,7 +33,7 @@ public class MemberDeleteServlet extends HttpServlet {
 
         // 3. 업무로직
         int result = memberService.deleteMember(id);
-        // 세션해제
+        // 세션해제 시 데이터 기입 불가
         session.invalidate();
 
         // 세션 새로 생성. msg 속성 저장
