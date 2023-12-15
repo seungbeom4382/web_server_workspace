@@ -151,4 +151,26 @@ public class MemberService {
         }
         return result;
     }
+
+    public List<Member> findAll(Map<String, Object> param){
+        SqlSession session = getSqlSession();
+        List<Member> members = memberDao.findAll(session, param);
+        session.close();
+
+        return members;
+    }
+
+    public int getTotalCount() {
+        SqlSession session = getSqlSession();
+        int totalCount = memberDao.getTotalCount(session);
+        session.close();
+        return totalCount;
+    }
+
+    public int getTotalCount(Map<String, Object> param) {
+        SqlSession session = getSqlSession();
+        int totalCount = memberDao.getTotalCount(session, param);
+        session.close();
+        return totalCount;
+    }
 }
