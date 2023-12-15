@@ -136,4 +136,19 @@ public class MemberService {
         session.close();
         return members;
     }
+
+    public int updateMemberPassword(Member loginMember) {
+        int result = 0;
+        SqlSession session = getSqlSession();
+        try {
+            result = memberDao.updatePassword(session, loginMember);
+            session.commit();
+        } catch (Exception e) {
+            session.rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+        return result;
+    }
 }
