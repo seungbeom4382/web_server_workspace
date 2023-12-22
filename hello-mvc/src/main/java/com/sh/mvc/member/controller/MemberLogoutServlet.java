@@ -17,13 +17,13 @@ public class MemberLogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // created 매개변수
+        // created매개변수 
         // - true(기본값) 세션이 있으면 세션반환, 없으면 새로 생성해서 반환
         // - false 세션이 있으면 세션반환, 없으면 null 반환
         HttpSession session = req.getSession(false); // 새로 생성여부
         if(session != null)
             session.invalidate();
-
+        
         // 인덱스페이지로 이동 (url변경)
         resp.sendRedirect(req.getContextPath() + "/");
     }

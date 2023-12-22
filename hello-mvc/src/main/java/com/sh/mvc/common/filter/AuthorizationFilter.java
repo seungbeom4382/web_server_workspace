@@ -15,20 +15,20 @@ import java.io.IOException;
 /**
  * 관리자 권한검사 필터
  * - authorization 권한 : 인증받은 사용자가 이 서비스를 이용할 수 있는지 체크
- * - 검사할 uri : /admin/*
+ * - 검사할 url : /admin/*
  * - 인증확인 및 로그인된 사용자의 권한 검사 (Role.A)
  */
 @WebFilter("/admin/*")
 public class AuthorizationFilter extends HttpFilter {
     @Override
-    protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
-        HttpSession session = req.getSession();
+    protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpSession session = request.getSession();
         Member loginMember = (Member) session.getAttribute("loginMember");
-        if(loginMember== null || loginMember.getRole() != Role.A){
-            session.setAttribute("msg", "관리자만 사용가능합니다. 🥲");
-            resp.sendRedirect(req.getContextPath() + "/");
+        if(loginMember == null || loginMember.getRole() != Role.A) {
+            session.setAttribute("msg", "관리자만 이용가능합니다. 😎");
+            response.sendRedirect(request.getContextPath() + "/");
             return;
         }
-        super.doFilter(req, resp, chain);
+        super.doFilter(request, response, chain);
     }
 }

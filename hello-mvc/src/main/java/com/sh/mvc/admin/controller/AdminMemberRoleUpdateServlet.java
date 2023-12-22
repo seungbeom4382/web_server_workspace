@@ -15,6 +15,7 @@ import java.io.IOException;
 public class AdminMemberRoleUpdateServlet extends HttpServlet {
 
     private MemberService memberService = new MemberService();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 1. 사용자입력값 처리
@@ -25,13 +26,13 @@ public class AdminMemberRoleUpdateServlet extends HttpServlet {
         member.setId(id);
         member.setRole(role);
         System.out.println(member);
-
         // 2. 업무로직
         int result = memberService.updateMemberRole(member);
         // 리다이렉트후에 사용자피드백
-        req.getSession().setAttribute("msg", "회원권한을 성공적으로 업데이트했습니다.");
+        req.getSession().setAttribute("msg", "회원권한을 성공적으로 업데이트했습니다. 😎");
 
         // 3. redirect
         resp.sendRedirect(req.getContextPath() + "/admin/memberList");
+
     }
 }

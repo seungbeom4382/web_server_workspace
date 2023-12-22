@@ -14,23 +14,23 @@ import java.util.List;
 
 /**
  * setter PreparedStatement에 ? 값대입
- * getter * 3 PreparedStatement/CallableStatement에서 값을 가져올때
+ * getter * 3 ResultSet/CallableStatement에서 값을 가져올때
  */
 @MappedTypes(List.class)
 @MappedJdbcTypes(JdbcType.VARCHAR)
 public class ListStringTypeHandler extends BaseTypeHandler<List<String>> {
     /**
-     * List요소를 꺼내서 ,기준으로 연결해 하나의 문자열을 반환
+     * List요소를 꺼내서 ,기준으로 연결해 하나의 문자열 반환
      * @param preparedStatement
      * @param i
      * @param strings
      * @param jdbcType
      * @throws SQLException
      */
-    @Override // setter는 null이 아닐때만 호출
+    @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, List<String> strings, JdbcType jdbcType) throws SQLException {
         String value = "";
-        for(int j=0; j<strings.size(); j++){
+        for(int j = 0; j < strings.size(); j++) {
             String v = strings.get(j);
             value += v;
             if(j != strings.size() - 1)
@@ -39,30 +39,30 @@ public class ListStringTypeHandler extends BaseTypeHandler<List<String>> {
         preparedStatement.setString(i, value);
     }
 
-    @Override // null일 경우도 호출
+    @Override
     public List<String> getNullableResult(ResultSet resultSet, String columnName) throws SQLException {
         String value = resultSet.getString(columnName);
-        if(value != null){
+        if(value != null) {
             return Arrays.asList(value.split(","));
         }
-        return null;
+		return null;
     }
 
     @Override
-    public List<String> getNullableResult(ResultSet resultSet, int colunmIndex) throws SQLException {
-        String value = resultSet.getString(colunmIndex);
-        if(value != null){
+    public List<String> getNullableResult(ResultSet resultSet, int columnIndex) throws SQLException {
+        String value = resultSet.getString(columnIndex);
+        if(value != null) {
             return Arrays.asList(value.split(","));
         }
-        return null;
+		return null;
     }
 
     @Override
-    public List<String> getNullableResult(CallableStatement callableStatement, int colunmIndex) throws SQLException {
-        String value = callableStatement.getString(colunmIndex);
-        if(value != null){
+    public List<String> getNullableResult(CallableStatement callableStatement, int columnIndex) throws SQLException {
+        String value = callableStatement.getString(columnIndex);
+        if(value != null) {
             return Arrays.asList(value.split(","));
         }
-        return null;
+		return null;
     }
 }

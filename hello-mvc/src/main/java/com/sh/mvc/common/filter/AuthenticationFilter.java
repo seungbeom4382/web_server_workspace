@@ -17,18 +17,19 @@ import java.io.IOException;
  * - @WebFilter 어노테이션은 urlPatterns, value 동일
  */
 @WebFilter(urlPatterns = {
-    "/member/memberDetail",
+    "/member/memberDetail", 
     "/member/memberUpdate",
     "/member/memberDelete",
+    "/board/boardCreate"
 })
-public class AuthenticationFilter extends HttpFilter { // 인증필터
+public class AuthenticationFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
         // 인증여부 검사
         HttpSession session = req.getSession();
         Member loginMember = (Member) session.getAttribute("loginMember");
-        if(loginMember == null){
-            session.setAttribute("msg", "로그인후 사용가능합니다. 😄");
+        if(loginMember == null) {
+            session.setAttribute("msg", "로그인후 사용가능합니다. 😉");
             resp.sendRedirect(req.getContextPath() + "/");
             return; // redirect/forward 이후 실행코드는 없어야 한다.
         }

@@ -19,8 +19,8 @@ import java.util.List;
 
 @WebServlet("/member/memberRegister")
 public class MemberRegisterServlet extends HttpServlet {
-
     private MemberService memberService = new MemberService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/views/member/memberRegister.jsp").forward(req, resp);
@@ -40,11 +40,12 @@ public class MemberRegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
         String _gender = req.getParameter("gender");
-        String[] _hobby = req.getParameterValues("hobby"); // 취미 다수 선택가능하므로 []
+        String[] _hobby = req.getParameterValues("hobby");
         System.out.println(id + ", " + password + ", " + name + ", " + _birthday + ", " + email + ", " + phone + ", " + _gender + ", " + _hobby);
 
         LocalDate birthday = _birthday != null && !"".equals(_birthday) ?
-                LocalDate.parse(_birthday, DateTimeFormatter.ISO_DATE) : null;
+                                LocalDate.parse(_birthday, DateTimeFormatter.ISO_DATE) :
+                                    null;
         Gender gender = _gender != null ? Gender.valueOf(_gender) : null;
         List<String> hobby = _hobby != null ? Arrays.asList(_hobby) : null;
 
@@ -54,8 +55,8 @@ public class MemberRegisterServlet extends HttpServlet {
         // 3. 업무로직
         int result = memberService.insertMember(member);
 
-        // 리다이렉트후 경고창으로 성공메시지 전달
-        req.getSession().setAttribute("msg", "😁😁 회원가입 축하드립니다. 😁😁");
+        // 리다이렉트후 경고창으로 성공메세지 전달
+        req.getSession().setAttribute("msg", "✨✨ 회원가입 축하드립니다. 🎉🎉");
 
         // 4. view(forward) | redirect
         resp.sendRedirect(req.getContextPath() + "/");

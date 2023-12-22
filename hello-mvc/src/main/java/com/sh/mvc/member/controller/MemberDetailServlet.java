@@ -2,7 +2,6 @@ package com.sh.mvc.member.controller;
 
 import com.sh.mvc.member.model.entity.Member;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,4 +20,3 @@ public class MemberDetailServlet extends HttpServlet {
                 .forward(req, resp);
     }
 }
-

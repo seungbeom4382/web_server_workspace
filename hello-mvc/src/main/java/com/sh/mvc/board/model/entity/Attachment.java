@@ -1,22 +1,22 @@
 package com.sh.mvc.board.model.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Attachment {
     private long id;
     private long boardId;
     private String originalFilename;
-    private String renameFilename;
-    private LocalDate regDate;
+    private String renamedFilename;
+    private LocalDateTime regDate;
 
     public Attachment() {
     }
 
-    public Attachment(long id, long boardId, String originalFilename, String renameFilename, LocalDate regDate) {
+    public Attachment(long id, long boardId, String originalFilename, String renamedFilename, LocalDateTime regDate) {
         this.id = id;
         this.boardId = boardId;
         this.originalFilename = originalFilename;
-        this.renameFilename = renameFilename;
+        this.renamedFilename = renamedFilename;
         this.regDate = regDate;
     }
 
@@ -44,19 +44,19 @@ public class Attachment {
         this.originalFilename = originalFilename;
     }
 
-    public String getRenameFilename() {
-        return renameFilename;
+    public String getRenamedFilename() {
+        return renamedFilename;
     }
 
-    public void setRenameFilename(String renameFilename) {
-        this.renameFilename = renameFilename;
+    public void setRenamedFilename(String renamedFilename) {
+        this.renamedFilename = renamedFilename;
     }
 
-    public LocalDate getRegDate() {
+    public LocalDateTime getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(LocalDate regDate) {
+    public void setRegDate(LocalDateTime regDate) {
         this.regDate = regDate;
     }
 
@@ -66,7 +66,7 @@ public class Attachment {
                 "id=" + id +
                 ", boardId=" + boardId +
                 ", originalFilename='" + originalFilename + '\'' +
-                ", renameFilename='" + renameFilename + '\'' +
+                ", renamedFilename='" + renamedFilename + '\'' +
                 ", regDate=" + regDate +
                 '}';
     }

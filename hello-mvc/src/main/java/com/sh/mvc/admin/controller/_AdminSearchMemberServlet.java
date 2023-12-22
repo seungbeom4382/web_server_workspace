@@ -14,13 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/admin/searchMember")
-public class AdminSearchMemberServlet extends HttpServlet {
-
+//@WebServlet("/admin/searchMember")
+public class _AdminSearchMemberServlet extends HttpServlet {
     private MemberService memberService = new MemberService();
 
     /**
-     * mybatis에서는 식별자(컬럼명, 테이블명)를 동적으로 작성할 수 있다. ${식별자}
+     * mybatis에서는 식별자(컬럼명, 테이블명)를 동적으로 작성할수 있다. ${식별자}
      * - (PreparedStatement에는 없음)
      *
      * select * from member where id like ?
@@ -39,9 +38,7 @@ public class AdminSearchMemberServlet extends HttpServlet {
         int limit = 10;
         try {
             page = Integer.parseInt(req.getParameter("page"));
-        } catch (NumberFormatException ignore) {
-
-        }
+        } catch (NumberFormatException ignore) {}
 
         String searchType = req.getParameter("search-type");
         String searchKeyword = req.getParameter("search-keyword");

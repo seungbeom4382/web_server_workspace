@@ -1,5 +1,6 @@
 package com.sh.mvc.member.model.service;
 
+
 import com.sh.mvc.member.model.dao.MemberDao;
 import com.sh.mvc.member.model.entity.Member;
 import org.apache.ibatis.session.SqlSession;
@@ -9,24 +10,25 @@ import java.util.Map;
 
 import static com.sh.mvc.common.SqlSessionTemplate.getSqlSession;
 
+
 public class MemberService {
     private MemberDao memberDao = new MemberDao();
 
-    public Member findById(String id){
+    public Member findById(String id) {
         SqlSession session = getSqlSession();
         Member member = memberDao.findById(session, id);
         session.close();
         return member;
     }
 
-    public List<Member> findAll(){
+    public List<Member> findAll() {
         SqlSession session = getSqlSession();
         List<Member> members = memberDao.findAll(session);
         session.close();
         return members;
     }
 
-    public List<Member> findByName(String name){
+    public List<Member> findByName(String name) {
         SqlSession session = getSqlSession();
         List<Member> members = memberDao.findByName(session, name);
         session.close();
@@ -61,7 +63,7 @@ public class MemberService {
         try {
             result = memberDao.updateMember(session, member);
             session.commit();
-        } catch (Exception e){
+        } catch(Exception e) {
             session.rollback();
             throw e;
         } finally {
@@ -70,11 +72,11 @@ public class MemberService {
         return result;
     }
 
-    public int updatePassword(Member member) {
+    public int updateMemberPassword(Member member) {
         int result = 0;
         SqlSession session = getSqlSession();
         try {
-            result = memberDao.updatePassword(session, member);
+            result = memberDao.updateMemberPassword(session, member);
             session.commit();
         } catch (Exception e) {
             session.rollback();
@@ -85,13 +87,13 @@ public class MemberService {
         return result;
     }
 
-    public int updateRole(Member member) {
+    public int updateMemberRole(Member member) {
         int result = 0;
         SqlSession session = getSqlSession();
         try {
-            result = memberDao.updateRole(session, member);
+            result = memberDao.updateMemberRole(session, member);
             session.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             session.rollback();
             throw e;
         } finally {
@@ -106,22 +108,7 @@ public class MemberService {
         try {
             result = memberDao.deleteMember(session, id);
             session.commit();
-        } catch (Exception e){
-            session.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
-        return result;
-    }
-
-    public int updateMemberRole(Member member) {
-        int result = 0;
-        SqlSession session = getSqlSession();
-        try {
-            result = memberDao.updateRole(session, member);
-            session.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             session.rollback();
             throw e;
         } finally {
@@ -137,26 +124,10 @@ public class MemberService {
         return members;
     }
 
-    public int updateMemberPassword(Member loginMember) {
-        int result = 0;
-        SqlSession session = getSqlSession();
-        try {
-            result = memberDao.updatePassword(session, loginMember);
-            session.commit();
-        } catch (Exception e) {
-            session.rollback();
-            throw e;
-        } finally {
-            session.close();
-        }
-        return result;
-    }
-
-    public List<Member> findAll(Map<String, Object> param){
+    public List<Member> findAll(Map<String, Object> param) {
         SqlSession session = getSqlSession();
         List<Member> members = memberDao.findAll(session, param);
         session.close();
-
         return members;
     }
 

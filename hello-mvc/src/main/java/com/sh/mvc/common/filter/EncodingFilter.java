@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 초기화파라미터
- * - servlet/filter등에서 환경변수처럼 사용가능한 값
+ * 초기화파라미터 
+ * - servlet/filter등에서 환경변수처럼 사용가능
  * - web.xml에서 지정하거나, @WebFilter안에서 지정
  */
 @WebFilter(value = "/*", initParams = {
-        @WebInitParam(name = "encoding", value = "utf-8")
+    @WebInitParam(name = "encoding", value = "utf-8")
 })
 public class EncodingFilter extends HttpFilter {
     private String encoding;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        this.encoding = filterConfig.getInitParameter("encoding");
+       this.encoding = filterConfig.getInitParameter("encoding");
     }
 
     @Override
@@ -32,6 +32,5 @@ public class EncodingFilter extends HttpFilter {
         request.setCharacterEncoding(encoding);
 //        System.out.println("utf-8 적용 완료...");
         super.doFilter(request, response, chain);
-
     }
 }

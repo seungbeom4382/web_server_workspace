@@ -13,7 +13,7 @@ public class MemberDao {
         return session.selectOne("member.findById", id);
     }
 
-    public List<Member> findAll(SqlSession session){
+    public List<Member> findAll(SqlSession session) {
         return session.selectList("member.findAll");
     }
 
@@ -21,7 +21,7 @@ public class MemberDao {
         return session.selectList("member.findByName", name);
     }
 
-    public List<Member> findByGender(SqlSession session, String gender){
+    public List<Member> findByGender(SqlSession session, String gender) {
         return session.selectList("member.findByGender", gender);
     }
 
@@ -33,12 +33,12 @@ public class MemberDao {
         return session.update("member.updateMember", member);
     }
 
-    public int updatePassword(SqlSession session, Member member) {
-        return session.update("member.updatePassword", member);
+    public int updateMemberPassword(SqlSession session, Member member) {
+        return session.update("member.updateMemberPassword", member);
     }
 
-    public int updateRole(SqlSession session, Member member) {
-        return session.update("member.updateRole", member);
+    public int updateMemberRole(SqlSession session, Member member) {
+        return session.update("member.updateMemberRole", member);
     }
 
     public int deleteMember(SqlSession session, String id) {
@@ -49,16 +49,15 @@ public class MemberDao {
         int page = (int) param.get("page");
         int limit = (int) param.get("limit");
         int offset = (page - 1) * limit;
-
         RowBounds rowBounds = new RowBounds(offset, limit);
         return session.selectList("member.searchMember", param, rowBounds);
     }
 
     /**
      * limit=10일때,
-     * - page=1, offset=0 1~10
-     * - page=2, offset=10 11~20
-     * - page=3, offset=20 21~30
+     * - page=1, offset=0 : 1 ~ 10
+     * - page=2, offset=10 : 11 ~ 20
+     * - page=3, offset=20 : 21 ~ 30
      * - ...
      * @param session
      * @param param
@@ -70,14 +69,14 @@ public class MemberDao {
         // 건너뛸 회원수
         int offset = (page - 1) * limit;
         RowBounds rowBounds = new RowBounds(offset, limit);
-        return session.selectList("member.findAllPage", null, rowBounds);
+        return session.selectList("member.findAllPage", param, rowBounds);
     }
 
     public int getTotalCount(SqlSession session) {
-        return session.selectOne("member.getTotalCount"); // selectList와 차이는 행의 수
+        return session.selectOne("member.getTotalCount");
     }
 
     public int getTotalCount(SqlSession session, Map<String, Object> param) {
-        return session.selectOne("member.getTotalCount2", param); // selectList와 차이는 행의 수
+        return session.selectOne("member.getTotalCount", param);
     }
 }
