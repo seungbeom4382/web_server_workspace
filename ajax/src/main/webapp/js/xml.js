@@ -14,6 +14,8 @@ document.querySelector("#btn1").onclick = () => {
 
             const root = xmlDoc.querySelector(":root");
             console.dir(root); // <books></books>
+            const value = root.getAttribute("myattr"); // 사용자속성
+            console.log(value);
 
             // const books = root.children;
             const books = xmlDoc.querySelectorAll("book");
