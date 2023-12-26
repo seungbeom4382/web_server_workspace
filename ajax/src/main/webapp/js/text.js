@@ -1,5 +1,5 @@
 /**
- *
+ * $.ajax
  */
 document.querySelector("#btn1").addEventListener("click", (e) =>{
     $.ajax({

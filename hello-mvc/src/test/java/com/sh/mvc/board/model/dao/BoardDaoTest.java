@@ -47,7 +47,7 @@ public class BoardDaoTest {
         List<Board> boards = boardDao.findAll(session);
         // then
         // allSatisfy : 리스트의 각 요소가 모든 단정문을 충족하는지 확인
-        Assertions.assertThat(boards)
+        assertThat(boards)
                 .isNotNull()
                 .allSatisfy((board -> {
                     // pk, 필수값 확인
@@ -70,7 +70,7 @@ public class BoardDaoTest {
         assertThat(board)
                 .isNotNull()
                 .satisfies((_board) -> {
-                   // pk, 필수값 확인
+                    // pk, 필수값 확인
                     assertThat(_board.getId()).isNotZero();
                     assertThat(_board.getTitle()).isNotNull();
                     assertThat(_board.getContent()).isNotNull();

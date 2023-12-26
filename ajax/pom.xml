@@ -44,7 +44,12 @@
           <artifactId>commons-fileupload</artifactId>
           <version>1.5</version>
       </dependency>
-
+      <!-- json데이터 핸들링 -->
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.10.1</version>
+      </dependency>
 
       <dependency>
           <groupId>org.junit.jupiter</groupId>
