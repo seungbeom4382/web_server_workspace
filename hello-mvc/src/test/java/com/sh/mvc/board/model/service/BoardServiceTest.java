@@ -1,4 +1,5 @@
 package com.sh.mvc.board.model.service;
+
 import com.sh.mvc.board.model.entity.Board;
 import com.sh.mvc.board.model.vo.BoardVo;
 import org.apache.ibatis.session.SqlSession;
@@ -9,12 +10,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
 import static com.sh.mvc.common.SqlSessionTemplate.getSqlSession;
 import static org.assertj.core.api.Assertions.assertThat;
+
 public class BoardServiceTest {
     static final int limit = 10; // 페이지당 게시글수
     BoardService boardService;
@@ -48,6 +52,7 @@ public class BoardServiceTest {
         // given
         // when
         Board board = boardService.findById(id);
+
         // then
         // satisfies : 요소가 모든 단정문을 충족하는지 확인
         assertThat(board)
@@ -81,6 +86,7 @@ public class BoardServiceTest {
         BoardVo board = new BoardVo();
         board.setTitle("제목");
         board.setContent("내용");
+
         int result = boardService.insertBoard(board);
         // then
         assertThat(result).isGreaterThan(0);
@@ -140,6 +146,7 @@ public class BoardServiceTest {
                 .isNotEmpty()
                 .size().isLessThanOrEqualTo(limit);
     }
+
     public static Stream<Integer> pageNoProvider() {
         BoardService boardService = new BoardService();
         SqlSession session = getSqlSession();
@@ -152,4 +159,5 @@ public class BoardServiceTest {
         List<Board> boards = boardService.findAll();
         return Stream.of(Arguments.arguments(boards.get(0).getId()));
     }
+
 }

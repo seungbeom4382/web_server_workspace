@@ -3,7 +3,6 @@ package com.sh.mvc.board.model.dao;
 import com.sh.mvc.board.model.entity.Board;
 import com.sh.mvc.board.model.vo.BoardVo;
 import org.apache.ibatis.session.SqlSession;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -150,11 +149,11 @@ public class BoardDaoTest {
     @DisplayName("전체 게시글수 조회")
     @Test
     void test6() {
-       // given
-       // when
-       int totalCount = boardDao.getTotalCount(session);
-       // then
-       assertThat(totalCount).isNotNegative(); // 음수가 아니어야 한다. 0이상
+        // given
+        // when
+        int totalCount = boardDao.getTotalCount(session);
+        // then
+        assertThat(totalCount).isNotNegative(); // 음수가 아니어야 한다. 0이상
     }
     @DisplayName("게시글 페이징 조회")
     @ParameterizedTest
@@ -162,7 +161,7 @@ public class BoardDaoTest {
     void test7(int page) {
         Map<String, Object> param = Map.of("page", page, "limit", limit);
         List<BoardVo> boards = boardDao.findAll(session, param);
-        Assertions.assertThat(boards)
+        assertThat(boards)
                 .isNotNull()
                 .isNotEmpty()
                 .size().isLessThanOrEqualTo(limit);
@@ -186,11 +185,11 @@ public class BoardDaoTest {
      * @return
      */
     public static Stream<Arguments> boardIdProvider() {
-		BoardDao boardDao = new BoardDao(); // non-static fixture를 사용할 수 없다.
+        BoardDao boardDao = new BoardDao(); // non-static fixture를 사용할 수 없다.
         List<Board> boards = boardDao.findAll(getSqlSession());
-		return Stream.of(
+        return Stream.of(
                 Arguments.arguments(boards.get(0).getId()),
                 Arguments.arguments(boards.get(1).getId())
         );
-	}
+    }
 }

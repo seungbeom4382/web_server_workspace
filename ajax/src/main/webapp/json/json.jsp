@@ -39,9 +39,7 @@
             <th>삭제</th>
         </tr>
         </thead>
-        <tbody>
-
-        </tbody>
+        <tbody></tbody>
     </table>
 
     <form name="celebSearchFrm">
@@ -115,6 +113,7 @@
     </form>
 
     <form name="celebUpdateFrm">
+        <input type="hidden" name="id">
         <fieldset>
             <legend>Celeb 수정폼</legend>
             <table>

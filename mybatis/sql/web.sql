@@ -710,13 +710,12 @@ create table board (
 create sequence seq_board_id;
 -- 첨부파일을 서버컴퓨터에 저장, 저장된 파일에 대한 정보만 db테이블에 저장한다.
 create table attachment (
-                            id number,
-                            board_id number not null,
-                            original_filename varchar2(255) not null, -- 사용자가 업로드한 파일명
-                            renamed_filename varchar2(255) not null, -- 저장된 파일명(uuid)
-                            reg_date date default sysdate,
-                            constraints pk_attachment_id primary key(id),
-                            constraints fk_attachment_board_id foreign key(board_id) references board(id) on delete cascade
+    id number,
+    board_id number not null,
+    original_filename varchar2(255) not null, -- 사용자가 업로드한 파일명
+    renamed_filename varchar2(255) not null, -- 저장된 파일명(uuid)    reg_date date default sysdate,
+    constraints pk_attachment_id primary key(id),
+    constraints fk_attachment_board_id foreign key(board_id) references board(id) on delete cascade
 );
 create sequence seq_attachment_id;
 -- 샘플데이터
